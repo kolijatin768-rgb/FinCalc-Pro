@@ -2,13 +2,13 @@ const CACHE_NAME = "fincalc-pro-v1";
 
 const ASSETS = [
   "./",
-  "./main.html",
+  "./index.html",
   "./ui.css",
   "./logics.js",
   "./manifest.json",
   "./favicon.svg",
-  "./icons/icon-192.png", // Added: Required for PWA installation
-  "./icons/icon-512.png"  // Added: Required for PWA installation
+  "./icon-192.png", 
+  "./icon-512.png"
 ];
 
 // Install Event
@@ -43,3 +43,4 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
