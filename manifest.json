@@ -2,7 +2,7 @@
   "name": "FinCalc Pro: Advanced Financial Calculator",
   "short_name": "FinCalc Pro",
   "description": "Professional financial and scientific calculator with live currency conversion.",
-  "start_url": "./main.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1a1a2e",
   "theme_color": "#14f1c6",
@@ -19,4 +19,3 @@
     }
   ]
 }
-
