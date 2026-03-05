@@ -1,25 +1,21 @@
 {
-  "name": "FinCalc Pro Financial Calculator",
-  "short_name": "FinCalc",
-  "start_url": "./index.html",
-  "scope": "./",
+  "name": "FinCalc Pro: Advanced Financial Calculator",
+  "short_name": "FinCalc Pro",
+  "description": "Professional financial and scientific calculator with live currency conversion.",
+  "start_url": "./main.html",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#1a1a2e",
   "theme_color": "#14f1c6",
-  "orientation": "portrait",
-  "description": "Advanced Financial Calculator with Currency Converter",
   "icons": [
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
