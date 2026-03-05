@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinCalc Pro</title>
+<link rel="stylesheet" href="UI.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14f1c6">
+</head>
+<body>
+
+<div class="background-shapes">
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
+</div>
+
+<main class="calculator-container">
+
+<header class="header">
+<h2>FinCalc Pro</h2>
+
+<button id="theme-toggle" class="icon-btn">
+<i class="fas fa-moon"></i>
+</button>
+
+</header>
+
+<section class="asset-selector">
+
+<select id="asset-type">
+<option value="standard">Standard Math</option>
+<option value="currency">Currency Converter</option>
+</select>
+
+<div class="currency-row">
+
+<select id="fromCurrency" class="currency-select">
+
+<option value="USD">🇺🇸 USD</option>
+<option value="INR">🇮🇳 INR</option>
+<option value="EUR">🇪🇺 EUR</option>
+<option value="GBP">🇬🇧 GBP</option>
+<option value="JPY">🇯🇵 JPY</option>
+<option value="AUD">🇦🇺 AUD</option>
+<option value="CAD">🇨🇦 CAD</option>
+
+</select>
+
+<button id="swapBtn" class="swap-btn">⇄</button>
+
+<select id="toCurrency" class="currency-select">
+
+<option value="INR">🇮🇳 INR</option>
+<option value="USD">🇺🇸 USD</option>
+<option value="EUR">🇪🇺 EUR</option>
+<option value="GBP">🇬🇧 GBP</option>
+<option value="JPY">🇯🇵 JPY</option>
+<option value="AUD">🇦🇺 AUD</option>
+<option value="CAD">🇨🇦 CAD</option>
+
+</select>
+
+</div>
+
+</section>
+
+<section class="display-container">
+
+<div id="last-calculation"></div>
+
+<input id="display" value="0" readonly>
+
+<div id="live-price" class="live-data"></div>
+
+</section>
+
+<section class="keypad">
+
+<button class="btn sci" onclick="appendFunc('sin')">sin</button>
+<button class="btn sci" onclick="appendFunc('cos')">cos</button>
+<button class="btn sci" onclick="appendFunc('tan')">tan</button>
+<button class="btn sci" onclick="appendFunc('log')">log</button>
+
+<button class="btn func" onclick="clearDisplay()">AC</button>
+<button class="btn func" onclick="deleteChar()">DEL</button>
+<button class="btn func" onclick="appendOperator('%')">%</button>
+<button class="btn op" onclick="appendOperator('/')">÷</button>
+
+<button class="btn num" onclick="appendNumber('7')">7</button>
+<button class="btn num" onclick="appendNumber('8')">8</button>
+<button class="btn num" onclick="appendNumber('9')">9</button>
+<button class="btn op" onclick="appendOperator('*')">×</button>
+
+<button class="btn num" onclick="appendNumber('4')">4</button>
+<button class="btn num" onclick="appendNumber('5')">5</button>
+<button class="btn num" onclick="appendNumber('6')">6</button>
+<button class="btn op" onclick="appendOperator('-')">−</button>
+
+<button class="btn num" onclick="appendNumber('1')">1</button>
+<button class="btn num" onclick="appendNumber('2')">2</button>
+<button class="btn num" onclick="appendNumber('3')">3</button>
+<button class="btn op" onclick="appendOperator('+')">+</button>
+
+<button class="btn num" onclick="appendNumber('.')">.</button>
+<button class="btn num" onclick="appendNumber('0')">0</button>
+<button class="btn equal" onclick="calculate()">=</button>
+
+</section>
+
+</main>
+
+<script src="Logics.js"></script>
+
+</body>
+</html>
