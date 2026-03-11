@@ -1,7 +1,4 @@
-// =============================
 // GLOBAL CALCULATOR FUNCTIONS
-// =============================
-// These are outside DOMContentLoaded so HTML onclick attributes can reach them
 
 function getDisplay() {
     return document.getElementById('display');
@@ -85,9 +82,8 @@ function calculate() {
     }
 }
 
-// =============================
 // CURRENCY & API LOGIC
-// =============================
+
 let currentRate = 0;
 let oldRate = 0;
 
@@ -136,9 +132,8 @@ async function fetchAssetData() {
     }
 }
 
-// =============================
 // INITIALIZATION & UI EVENTS
-// =============================
+
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById('theme-toggle');
     const assetType = document.getElementById('asset-type');
@@ -240,3 +235,4 @@ installBtn.addEventListener("click", async () => {
 
   deferredPrompt = null;
 });
+
