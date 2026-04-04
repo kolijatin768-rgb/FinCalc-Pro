@@ -1,5 +1,3 @@
-// GLOBAL CALCULATOR FUNCTIONS
-
 function getDisplay() {
     return document.getElementById('display');
 }
@@ -50,17 +48,14 @@ function calculate() {
     try {
         let expression = getDisplay().value;
 
-        // Replace custom visual operators with JS math operators
         expression = expression.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
 
-        // Scientific functions mapping
         expression = expression
             .replace(/sin\(/g, 'Math.sin(')
             .replace(/cos\(/g, 'Math.cos(')
             .replace(/tan\(/g, 'Math.tan(')
             .replace(/log\(/g, 'Math.log10(');
 
-        // Auto-close parentheses if user forgot
         const openParen = (expression.match(/\(/g) || []).length;
         const closeParen = (expression.match(/\)/g) || []).length;
         for (let i = 0; i < openParen - closeParen; i++) {
@@ -69,11 +64,9 @@ function calculate() {
 
         let result = eval(expression);
         
-        // Handle precision and display
         if (!isFinite(result)) throw new Error("Infinity");
         getDisplay().value = Number(result.toFixed(8)).toString();
 
-        // If in currency mode, update the conversion result immediately
         if (document.getElementById('asset-type').value === 'currency') {
             fetchAssetData();
         }
@@ -81,8 +74,6 @@ function calculate() {
         getDisplay().value = 'Error';
     }
 }
-
-// CURRENCY & API LOGIC
 
 let currentRate = 0;
 let oldRate = 0;
@@ -116,11 +107,10 @@ async function fetchAssetData() {
             maximumFractionDigits: 2
         });
 
-        // Set indicator color
         if (currentRate > oldRate && oldRate !== 0) {
-            liveDisp.style.color = "#0efe01"; // Greenish accent
+            liveDisp.style.color = "#0efe01";
         } else if (currentRate < oldRate && oldRate !== 0) {
-            liveDisp.style.color = "#ff2222"; // Reddish
+            liveDisp.style.color = "#ff2222";
         }
 
         const arrow = currentRate > oldRate ? "↑" : (currentRate < oldRate ? "↓" : "");
@@ -132,18 +122,14 @@ async function fetchAssetData() {
     }
 }
 
-// INITIALIZATION & UI EVENTS
-
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById('theme-toggle');
     const assetType = document.getElementById('asset-type');
     const currencyRow = document.querySelector('.currency-row');
     const swapBtn = document.getElementById('swapBtn');
 
-    // Default: Hide currency row if Standard Math is selected
     currencyRow.style.display = 'none';
 
-    // Theme Switcher
     themeToggle.addEventListener('click', () => {
         const isDark = document.body.getAttribute('data-theme') === 'dark';
         const newTheme = isDark ? 'light' : 'dark';
@@ -152,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
             '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
 
-    // Asset Selection Toggle
     assetType.addEventListener('change', () => {
         if (assetType.value === 'currency') {
             currencyRow.style.display = 'flex';
@@ -163,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Swap Currencies logic
     swapBtn.addEventListener('click', () => {
         const fromSelect = document.getElementById('fromCurrency');
         const toSelect = document.getElementById('toCurrency');
@@ -173,11 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchAssetData();
     });
 
-    // Update conversion when currency selection changes
     document.getElementById('fromCurrency').addEventListener('change', fetchAssetData);
     document.getElementById('toCurrency').addEventListener('change', fetchAssetData);
 
-    // Visual Ripple Effect on Buttons
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', function (e) {
             const ripple = document.createElement('span');
@@ -197,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Keyboard Support
     document.addEventListener('keydown', (e) => {
         if (e.key >= '0' && e.key <= '9') appendNumber(e.key);
         if (['+', '-', '*', '/'].includes(e.key)) appendOperator(e.key);
