@@ -11,7 +11,6 @@ const ASSETS = [
   "./icon-512.png"
 ];
 
-// Install Event
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -20,7 +19,6 @@ self.addEventListener("install", event => {
   );
 });
 
-// Activate Event - Clean up old caches
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -35,7 +33,6 @@ self.addEventListener("activate", event => {
   );
 });
 
-// Fetch Event - Serve from cache if offline
 self.addEventListener("fetch", event => {
   if (event.request.url.includes('_vercel/insights')) {
     return;
